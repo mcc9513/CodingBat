@@ -1,0 +1,198 @@
+1.Warmup-1 > sleepIn
+public boolean sleepIn(boolean weekday, boolean vacation) {
+  if (!weekday || vacation) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+//if not a weekday, sleepIn is always true
+//if it's a weekday but vacation, also true
+//any other condition is false
+
+2.Warmup-1>diff21
+public int diff21(int n) {
+  if (n <= 21) {
+    return 21 - n;
+  } else {
+    return (n - 21) * 2;
+  }
+}
+//if n is less than or equal to 21, return the             difference
+//if n is greater than 21, return twice the difference
+
+3.Warmup-1>parrotTrouble
+public boolean parrotTrouble(boolean talking, int hour) {
+  if (talking){
+    if(hour<7 || hour>20){
+      return true;
+    }
+    return false;
+  }
+  else {
+    return false;
+  }
+}
+//if talking is true, and the hour is before 7 and after 20, there is trouble.
+//the return false statement within the first loop made sure that anything between those numbers were false
+//the second return false statement states that no talking means no trouble
+
+4.Warmup-1>makes10
+public boolean makes10(int a, int b) {
+  if(a==10){
+    return true;
+  }
+  else if(b==10){
+    return true;
+  }
+  else if(a+b==10){
+    return true;
+  }
+  return false;
+}
+//using == as opposed to = changes the expression to be evaluated into a boolean instead of an int
+
+5.Warmup-1>frontBack
+   public String frontBack(String str) {
+  if (str.length() <= 1) return str;
+
+  String mid = str.substring(1, str.length()-1);
+
+
+  return str.charAt(str.length()-1) + mid + str.charAt(0);
+}
+//create a subString from the second character to the second to last(which is length()-1)
+//last + mid + first
+
+6.Warmup-1>stringE
+public boolean stringE(String str) {
+  int count = 0;
+
+  for (int i=0; i<str.length(); i++) {
+    if (str.charAt(i) == 'e') count++;
+
+  }
+
+  return (count >= 1 && count <= 3);
+}
+//for (int i=0; i<str.length(); i++) {: A for loop is started, which iterates over each character in the string str. The loop runs from i = 0 to i = str.length() - 1
+//the return line outside for loop is finishing the boolean function, returning true if count is between 1 and 3
+
+7.Warmup-1>in3050
+public boolean in3050(int a, int b) {
+  if (a >= 30 && a <= 40 && b >= 30 && b <= 40) {
+    return true;
+  }
+  if (a >= 40 && a <= 50 && b >= 40 && b <= 50) {
+    return true;
+  }
+  return false;
+}
+//all four expressions must be true for a true return value, this allows for the ranges to be written out together on the same line within the if statement
+//if all four expressions are not true in either if statement, return is false
+
+8.Warmup-1>backAround
+public String backAround(String str) {
+  String last = str.substring(str.length() - 1);
+  return last + str + last;
+}
+//makes a substring out of the last index, then stores it in a string
+
+9.Warmup-2>stringTimes
+public String stringTimes(String str, int n) {
+  String result = "";
+  for (int i=0; i<n; i++) {
+    result += str;
+  }
+  return result;
+}
+//the for loop will repeat n times, causing str to be added to result n times
+
+10.Warmup-2>doubleX
+boolean doubleX(String str) {
+  int i = str.indexOf("x");
+  if (i == -1) return false;
+  if (i+1 >= str.length()) return false;
+  return str.substring(i+1, i+2).equals("x");
+
+}
+//indexOf method to set i= to the index of the first occurrence of 'x'
+// no "x" at all return false
+//i+1 = the index of the next character after the found 'x'
+//if i+1=str.length(), the length of the string would be more than the index value
+//i+2 is the outer bound of the substring, aka the string includes i+1 but ends before i+2
+
+11.Warmup-2>frontTimes
+public String frontTimes(String str, int n) {
+  int frontLen = 3;
+  if (frontLen > str.length()) {
+    frontLen = str.length();
+  }
+  String front = str.substring(0, frontLen);
+
+  String result = "";
+  for (int i=0; i<n; i++) {
+    result += front;
+  }
+  return result;
+}
+//if the "front length"(3) is greater than the length of the string, the frontLen is set to str.length()
+//front is set to a substring that holds the 0 index through the second
+//each iteration of the for loop adds each substring(indices 0-3 of str) to the result
+
+12.Warmup-2>altPairs
+public String altPairs(String str) {
+  String result = "";
+
+  for (int i=0; i<str.length(); i += 4) {
+
+    int end = i + 2;
+    if (end > str.length()) {
+      end = str.length();
+    }
+    result += str.substring(i, end);
+  }
+  return result;
+}
+//for loop iterates through string and takes every fourth character, skipping three characters after each iteration
+//int end = i + 2 sets the end index for each substring added to the result to the index after the index after every fourth index, causing the substring to hold the fourth index and the one after it
+//if statement set the end index to str.length() if the end index is greater than the str.length()
+//the first iteration takes the characters at 0 and 1, because end is i+2
+
+13.Warmup-2>array123
+public boolean array123(int[] nums) {
+  for (int i=0; i < (nums.length-2); i++) {
+    if (nums[i]==1 && nums[i+1]==2 && nums[i+2]==3) return true;
+  }
+  return false;
+}
+//(nums.length - 2) is to ensure that there are at least three elements left in the array from the current index i
+//returns true if the int at the starting index is 1, next is 2, next is 3
+//otherwise return false
+
+14.Warmup-2>stringBits
+public String stringBits(String str) {
+  String result = "";
+  for (int i=0; i<str.length(); i+=2) {
+    result += str.substring(i, i+1);
+  }
+  return result;
+}
+//for loop iterates over every other index, starting at 0
+//the substring includes the char at index 0 but not the next index, next iteration will start at 2 (i+=2)
+
+15.Warmup-2>countXX
+int countXX(String str) {
+  int count = 0;
+  for (int i = 0; i < str.length()-1; i++) {
+    if (str.substring(i, i+2).equals("xx")) count++;
+  }
+  return count;
+}
+//set count to 0
+//iterates over thr string until reaching the last index
+//substring includes the 0 and 1 index, but not 2 (isolates two x beside each other)
+//if this substring equals "xx" this starts the count at one, each iteration of for loop adds to the count
+//use equals() to compare strings, not ==
+
